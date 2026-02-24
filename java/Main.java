@@ -38,13 +38,14 @@ public class Main
     public static void menuOperations()
     {
         String option;
-        int n;
+        long n;
         Operation oper = new Operation();
         do {
             System.out.println("Menú de operaciones");
             System.out.println("0. Regresar");
             System.out.println("1. Suma naturales");
-            System.out.println("2. ");
+            System.out.println("2. Suma naturales Gauss");
+            System.out.println("3. Pares e impares");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -62,10 +63,24 @@ public class Main
                     }
                     break;
                 case "2":
-                    // System.out.println("Hasta pronto");
+                    System.out.print("Ingrese n: ");
+                    n = input.nextInt();
+                    input.nextLine();
+                    if (n > 0) {
+                        System.out.println("Suma de 1 a " + n + ": " + oper.sumNaturalsGauss(n));
+                    } else {
+                        System.out.println("Valor de n no válido");
+                    }
                     break;
                 case "3":
-                    // System.out.println("Hasta pronto");
+                    System.out.print("Ingrese n: ");
+                    n = input.nextInt();
+                    input.nextLine();
+                    if (n >= 0) {
+                        oper.numberEvenOdd(n);
+                    } else {
+                        System.out.println("Valor de n no válido");
+                    }
                     break;
                 default: 
                     System.out.println("Opción no válida");
