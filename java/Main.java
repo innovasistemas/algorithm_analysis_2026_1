@@ -12,7 +12,8 @@ public class Main
             System.out.println("Menú de opciones");
             System.out.println("0. Salir");
             System.out.println("1. Operaciones básicas");
-            System.out.println("2. Vectores");
+            System.out.println("2. Personas");
+            System.out.println("3. Vectores");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -24,7 +25,7 @@ public class Main
                     menuOperations();
                     break;
                 case "2":
-                    // System.out.println("Hasta pronto");
+                    menuPersons();
                     break;
                 case "3":
                     // System.out.println("Hasta pronto");
@@ -46,6 +47,8 @@ public class Main
             System.out.println("1. Suma naturales");
             System.out.println("2. Suma naturales Gauss");
             System.out.println("3. Pares e impares");
+            System.out.println("4. Tablas de multiplicar");
+            System.out.println("5. Reloj");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -81,6 +84,42 @@ public class Main
                     } else {
                         System.out.println("Valor de n no válido");
                     }
+                    break;
+                case "4":
+                    System.out.print("Ingrese n: ");
+                    n = input.nextLong();
+                    if (n > 0) {
+                        oper.multiplicationTables(n);
+                    } else {
+                        System.out.println("Valor de n no válido");
+                    }
+                    break;
+                case "5":
+                    oper.clock();
+                    break;
+                default: 
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+
+
+    public static void menuPersons()
+    {
+        String option;
+        Person per = new Person();
+        do {
+            System.out.println("Menú Personas");
+            System.out.println("0. Regresar");
+            System.out.println("1. Grupo más longevo");
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    per.oldGroupPerson();
                     break;
                 default: 
                     System.out.println("Opción no válida");
