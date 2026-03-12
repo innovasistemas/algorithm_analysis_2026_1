@@ -141,6 +141,11 @@ public class Main
             System.out.println("2. Tamaño");
             System.out.println("3. Mostrar");
             System.out.println("4. Buscar");
+            System.out.println("5. Suma");
+            System.out.println("6. Promedio");
+            System.out.println("7. Mayor");
+            System.out.println("8. Menor");
+            System.out.println("9. Ordenar burbuja");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -178,6 +183,42 @@ public class Main
                         } else {
                             System.out.println("El dato " + datum + " no se encuentra en el vector");
                         }
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "5":
+                    if (v.getN() > 0) {
+                        System.out.println("Suma vector: " + v.sumVector());
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "6":
+                    if (v.getN() > 0) {
+                        System.out.println("Promedio vector: " + v.avgVector());
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "7":
+                    if (v.getN() > 0) {
+                        System.out.println("Mayor dato vector: " + v.maxVector());
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "8":
+                    if (v.getN() > 0) {
+                        System.out.println("Menor dato vector: " + v.minVector());
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "9":
+                    if (v.getN() > 0) {
+                        v.sortBubble();
+                        System.out.println("Vector ordenado ascendentemente");
                     } else {
                         System.out.println("Vector vacío");
                     }
