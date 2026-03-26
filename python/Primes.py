@@ -1,3 +1,5 @@
+from Operations import Operations
+
 class Primes:
 
     def Primes(self):
@@ -48,5 +50,23 @@ class Primes:
                 else: 
                     i += 2
         return sw
+    
+    def new_prime_Euclides(self, P) -> int:
+        obj_prod = Operations()
+        x = obj_prod.product(P)
+        y = x + 1
+        d = 2
+        while y % d != 0:
+            d += 1
+        return d
+    
+    def new_prime_without_Euclides(self, P) -> int:
+        new_prime = max(P) + 1
+        self.set_n(new_prime)
+        while self.prime4():
+            new_prime += 1
+            self.set_n(new_prime)
+        return new_prime
+
 
 

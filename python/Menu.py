@@ -3,6 +3,7 @@ from Primes import Primes
 
 pr = Primes()
 option = ""
+P = [2]
 while option != "0":
     print("Menú de opciones")
     print("1. Ingresar n")
@@ -11,6 +12,8 @@ while option != "0":
     print("4. primo2(n)")
     print("5. primo3(n)")
     print("6. primo4(n)")
+    print("7. Nuevo primo Euclides")
+    print("8. Nuevo primo sin Euclides")
     option = input("Ingrese su opción: ")
 
     match option:
@@ -52,5 +55,17 @@ while option != "0":
                 print(f"{pr.get_n()} es primo")
             end = time.time()
             print(f"Tiempo prime4(n): {end - start}")
+        case "7":
+            start = time.time()
+            P.append(pr.new_prime_Euclides(P))
+            end = time.time()
+            print(P)
+            print(f"Tiempo nuevo primo Euclides: {end - start}")
+        case "8":
+            # start = time.time()
+            P.append(pr.new_prime_without_Euclides(P))
+            # end = time.time()
+            print(P)
+            # print(f"Tiempo nuevo primo Euclides: {end - start}")
         case _:
             print("Opción no válida")
