@@ -65,6 +65,25 @@ public class Vector
         return pos;
     }
 
+    public int binarySearch(int datum)
+    {
+        int lowerLimit = 0;
+        int upperLimit = n - 1;
+        int centralPos;
+        int pos = -1;
+        while (lowerLimit < upperLimit && pos == -1) {
+            centralPos = (lowerLimit + upperLimit) / 2;
+            if (vec[centralPos] == datum) {
+                pos = centralPos;
+            } else if (vec[centralPos] > datum) {
+                upperLimit = centralPos - 1;
+            } else {
+                lowerLimit = centralPos + 1;
+            }
+        }
+        return pos;
+    }
+
     public int sumVector()
     {
         int s = 0;

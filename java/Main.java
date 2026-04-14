@@ -146,6 +146,7 @@ public class Main
             System.out.println("7. Mayor");
             System.out.println("8. Menor");
             System.out.println("9. Ordenar burbuja");
+            System.out.println("10. Búsqueda binaria");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -219,6 +220,21 @@ public class Main
                     if (v.getN() > 0) {
                         v.sortBubble();
                         System.out.println("Vector ordenado ascendentemente");
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "10":
+                    if (v.getN() > 0) {
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = v.binarySearch(datum);
+                        if (position > -1) {
+                            System.out.println("Dato encontrado en posición " + position);
+                        } else {
+                            System.out.println("El dato " + datum + " no se encuentra en el vector");
+                        }
                     } else {
                         System.out.println("Vector vacío");
                     }
