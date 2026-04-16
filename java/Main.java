@@ -145,8 +145,10 @@ public class Main
             System.out.println("6. Promedio");
             System.out.println("7. Mayor");
             System.out.println("8. Menor");
-            System.out.println("9. Ordenar burbuja");
+            System.out.println("9. Ordenación por intercambio directo (burbuja)");
             System.out.println("10. Búsqueda binaria");
+            System.out.println("11. Llenar vector aleatoriamente");
+            System.out.println("12. Ordenación por fusión (merge sort)");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -219,7 +221,7 @@ public class Main
                 case "9":
                     if (v.getN() > 0) {
                         v.sortBubble();
-                        System.out.println("Vector ordenado ascendentemente");
+                        System.out.println("Vector ordenado ascendentemente por burbuja");
                     } else {
                         System.out.println("Vector vacío");
                     }
@@ -238,6 +240,15 @@ public class Main
                     } else {
                         System.out.println("Vector vacío");
                     }
+                    break;
+                case "11":
+                    v = new Vector(1000000);
+                    v.setN(v.getT());
+                    System.out.println("Vector creado");
+                    break;
+                case "12":
+                    v.sort(v.getVec(), 0 , v.getT() - 1);
+                    System.out.println("Vector ordenado ascendentemente (fusión)");
                     break;
                 default: 
                     System.out.println("Opción no válida");
