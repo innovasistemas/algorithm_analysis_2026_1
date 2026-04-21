@@ -149,6 +149,7 @@ public class Main
             System.out.println("10. Búsqueda binaria");
             System.out.println("11. Llenar vector aleatoriamente");
             System.out.println("12. Ordenación por fusión (merge sort)");
+            System.out.println("13. Ordenación por selección directa");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -249,6 +250,10 @@ public class Main
                 case "12":
                     v.sort(v.getVec(), 0 , v.getT() - 1);
                     System.out.println("Vector ordenado ascendentemente (fusión)");
+                    break;
+                case "13":
+                    v.sortSelection();
+                    System.out.println("Vector ordenado ascendentemente (selección)");
                     break;
                 default: 
                     System.out.println("Opción no válida");

@@ -186,6 +186,23 @@ public class Vector
         }
     }
 
+    // Ordenación por selección directa
+    public void sortSelection()
+    {
+        for (int i = 0; i < n - 1; i++) {
+            int k = i;
+            int min = vec[i];
+            for (int j = i + 1; j < n; j++) {
+                if (vec[j] < min) {
+                    k = j;
+                    min = vec[j];
+                }
+            }
+            vec[k] = vec[i];
+            vec[i] = min;
+        }
+    }
+
     // Ordenación por fusión (merge sort)
     public void merge(int arr[], int l, int m, int r)
     {
