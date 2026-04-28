@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import com.packages.operations.*;
 import com.packages.arrays.*;
+import com.packages.linked_list.*;
 
 public class Main
 {
@@ -15,6 +16,7 @@ public class Main
             System.out.println("1. Operaciones básicas");
             System.out.println("2. Personas");
             System.out.println("3. Vectores");
+            System.out.println("4. Listas Simplemente Ligadas");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -30,6 +32,9 @@ public class Main
                     break;
                 case "3":
                     menuVectors();
+                    break;
+                case "4":
+                    menuLSL();
                     break;
                 default: 
                     System.out.println("Opción no válida");
@@ -255,6 +260,138 @@ public class Main
                     v.sortSelection();
                     System.out.println("Vector ordenado ascendentemente (selección)");
                     break;
+                default: 
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+
+    public static void menuLSL()
+    {
+        String option;
+        int datum;
+        SimpleLinkedList lsl = new SimpleLinkedList();
+        do {
+            System.out.println("\nMenú Lista Simplemente Ligada");
+            System.out.println("0. Regresar");
+            System.out.println("1. Agregar");
+            System.out.println("2. Tamaño");
+            System.out.println("3. Mostrar");
+            System.out.println("4. Buscar");
+            System.out.println("5. Modificar");
+            System.out.println("6. Suma");
+            System.out.println("7. Promedio");
+            System.out.println("8. Mayor");
+            System.out.println("9. Menor");
+            System.out.println("10. Ordenación por intercambio directo (burbuja)");
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    System.out.print("Dato a agregar: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    lsl.createBegin(datum);
+                    System.out.println("Nodo agregado correctamente");
+                    break;
+                // case "2":
+                //     System.out.println("Tamaño vector: " + v.getN());
+                //     break;
+                case "3":
+                    if (lsl.head != null) {
+                        lsl.showLSL();
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                    break;
+                case "4":
+                    if (lsl.head != null) {
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        Node dir = lsl.findLSL(datum);
+                        if (dir != null) {
+                            System.out.println("Dato encontrado en dirección " + dir);
+                        } else {
+                            System.out.println("El dato " + datum + " no se encuentra en la LSL");
+                        }
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                    break;
+                case "5":
+                    if (lsl.head != null) {
+                        System.out.print("Dato a modificar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        Node dir = lsl.findLSL(datum);
+                        if (dir != null) {
+                            System.out.print("Nuevo dato: ");
+                            datum = input.nextInt();
+                            input.nextLine();
+                            lsl.updateLSL(dir, datum);
+                            System.out.println("Dato actualizado correctamente");
+                        } else {
+                            System.out.println("El dato " + datum + " no se encuentra en la LSL");
+                        }
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                    break;
+                // case "5":
+                //     if (v.getN() > 0) {
+                //         System.out.println("Suma vector: " + v.sumVector());
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "6":
+                //     if (v.getN() > 0) {
+                //         System.out.println("Promedio vector: " + v.avgVector());
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "7":
+                //     if (v.getN() > 0) {
+                //         System.out.println("Mayor dato vector: " + v.maxVector());
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "8":
+                //     if (v.getN() > 0) {
+                //         System.out.println("Menor dato vector: " + v.minVector());
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "9":
+                //     if (v.getN() > 0) {
+                //         v.sortBubble();
+                //         System.out.println("Vector ordenado ascendentemente por burbuja");
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "10":
+                //     if (v.getN() > 0) {
+                //         System.out.print("Dato a buscar: ");
+                //         datum = input.nextInt();
+                //         input.nextLine();
+                //         position = v.binarySearch(datum);
+                //         if (position > -1) {
+                //             System.out.println("Dato encontrado en posición " + position);
+                //         } else {
+                //             System.out.println("El dato " + datum + " no se encuentra en el vector");
+                //         }
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
                 default: 
                     System.out.println("Opción no válida");
             }
