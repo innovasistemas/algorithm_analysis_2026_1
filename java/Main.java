@@ -279,11 +279,13 @@ public class Main
             System.out.println("3. Mostrar");
             System.out.println("4. Buscar");
             System.out.println("5. Modificar");
-            System.out.println("6. Suma");
-            System.out.println("7. Promedio");
-            System.out.println("8. Mayor");
-            System.out.println("9. Menor");
-            System.out.println("10. Ordenación por intercambio directo (burbuja)");
+            System.out.println("6. Eliminar");
+            System.out.println("7. Insertar después de referencia");
+            // System.out.println("6. Suma");
+            // System.out.println("7. Promedio");
+            // System.out.println("8. Mayor");
+            // System.out.println("9. Menor");
+            // System.out.println("10. Ordenación por intercambio directo (burbuja)");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -297,9 +299,9 @@ public class Main
                     lsl.createBegin(datum);
                     System.out.println("Nodo agregado correctamente");
                     break;
-                // case "2":
-                //     System.out.println("Tamaño vector: " + v.getN());
-                //     break;
+                case "2":
+                    System.out.println("Tamaño LSL: " + lsl.getN());
+                    break;
                 case "3":
                     if (lsl.head != null) {
                         lsl.showLSL();
@@ -336,6 +338,35 @@ public class Main
                             System.out.println("Dato actualizado correctamente");
                         } else {
                             System.out.println("El dato " + datum + " no se encuentra en la LSL");
+                        }
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                    break;
+                case "6":
+                    if (lsl.head != null) {
+                        System.out.print("Dato a eliminar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        lsl.deleteNodeLSL(datum);
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                    break;
+                case "7":
+                    if (lsl.head != null) {
+                        System.out.print("Dato de referencia: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        Node dir = lsl.findLSL(datum);
+                        if (dir != null) {
+                            System.out.print("Dato a insertar: ");
+                            datum = input.nextInt();
+                            input.nextLine();
+                            lsl.insertAfterLSL(dir, datum);
+                            System.out.println("Dato insertado correctamente después de referencia");
+                        } else {
+                            System.out.println("El dato de referencia " + datum + " no se encuentra en la LSL");
                         }
                     } else {
                         System.out.println("Lista vacía");
