@@ -17,6 +17,7 @@ public class Main
             System.out.println("2. Personas");
             System.out.println("3. Vectores");
             System.out.println("4. Listas Simplemente Ligadas");
+            System.out.println("5. Grafos");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -35,6 +36,9 @@ public class Main
                     break;
                 case "4":
                     menuLSL();
+                    break;
+                case "5":
+                    menuGraph();
                     break;
                 default: 
                     System.out.println("Opción no válida");
@@ -426,6 +430,127 @@ public class Main
                 default: 
                     System.out.println("Opción no válida");
             }
+        } while (!option.equals("0"));
+    }
+
+    public static void menuGraph()
+    {
+        String option;
+        int datum, position;
+        AdjacencyList vNode = new AdjacencyList();
+        do {
+            System.out.println("\nMenú Grafos");
+            System.out.println("0. Regresar");
+            System.out.println("1. Agregar nodo");
+            System.out.println("2. Tamaño grafo");
+            System.out.println("3. Mostrar grafo");
+            System.out.println("4. Buscar nodo");
+            System.out.println("5. Adyacencia");
+
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    if (vNode.getN() < vNode.getT()) {
+                        System.out.print("Dato a agregar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        vNode.addNode(datum);
+                    } else {
+                        System.out.println("Grafo lleno");
+                    }
+                    break;
+                case "2":
+                    System.out.println("Tamaño grafo: " + vNode.getN());
+                    break;
+                case "3":
+                    if (vNode.getN() > 0) {
+                        vNode.showNodes();
+                    } else {
+                        System.out.println("Grafo vacío");
+                    }
+                    break;
+                case "4":
+                    if (vNode.getN() > 0) {
+                        System.out.print("Nodo a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = vNode.findNode(datum);
+                        if (position > -1) {
+                            System.out.println("Nodo encontrado en posición " + position);
+                        } else {
+                            System.out.println(datum + " no existe en el grafo");
+                        }
+                    } else {
+                        System.out.println("Grafo vacío");
+                    }
+                    break;
+                case "5":
+                    if (vNode.getN() > 0) {
+                        subMenuAdjacency(vNode);
+                    } else {
+                        System.out.println("Grafo vacío");
+                    }
+                    break;
+                default: 
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+
+    public static void subMenuAdjacency(AdjacencyList vNode)
+    {
+        String option;
+        int datum, position;
+        do {
+            System.out.println("\nMenú Grafos");
+            System.out.println("0. Regresar");
+            System.out.println("1. Agregar nodo adyacente");
+            System.out.println("2. Mostrar adyacentes");
+            System.out.println("3. Eliminar adyacencia");
+
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    vNode.showNodes();
+                    System.out.print("Nodo: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    position = vNode.findNode(datum);
+                    if (position > -1) {
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = vNode.findNode(datum);
+                        if (position > -1) {
+                            if (datum != vNode.getDatumVecNode(position)) {
+                                datum = input.nextInt();
+                                input.nextLine();
+                                // Crear o añadir nodos a la LSL
+                            } else {
+                                System.out.println("No puede tener adyacencia al mismo nodo");
+                            }
+                        } else {
+                            System.out.println(datum + " no existe en el grafo");
+                        }
+                    } else {
+                        System.out.println(datum + " no existe en el grafo");
+                    }
+                    
+                    break;
+                case "2":
+                    System.out.println("Tamaño grafo: " + vNode.getN());
+                    break;
+                default: 
+                    System.out.println("Opción no válida");
+            }
+
         } while (!option.equals("0"));
     }
 }
