@@ -2,12 +2,13 @@ package com.packages.linked_list;
 
 public class SimpleLinkedList 
 {
-    public Node head;
+    public Node head, last;
     private int n;
 
     public SimpleLinkedList()
     {
         head = null;
+        last = null;
         n = 0;
     }  
 
@@ -39,6 +40,19 @@ public class SimpleLinkedList
         this.n++;
     }
 
+    public void createEnd(Node vec[], int pos1, int pos2)
+    {
+        Node mem = new Node();
+        mem.info = vec[pos2].info;
+        mem.link = null;
+        if (vec[pos1].link == null) {
+            vec[pos1].link = mem;
+        } else {
+            last.link = mem;
+        }
+        last = mem;
+    }
+
     public void showLSL()
     {
         Node p = head;
@@ -47,6 +61,16 @@ public class SimpleLinkedList
             System.out.println("Liga: " + p.link);
             System.out.println("Dirección nodo: " + p);
             System.out.println("------------------------");
+            p = p.link;
+        }
+    }
+
+    public void showLSL(Node vec[], int pos)
+    {
+        Node p = vec[pos].link;
+        System.out.println("Nodos adyacentes a " + vec[pos].info);
+        while (p != null) {
+            System.out.println("Información: " + p.info);
             p = p.link;
         }
     }

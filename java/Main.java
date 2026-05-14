@@ -504,7 +504,8 @@ public class Main
     public static void subMenuAdjacency(AdjacencyList vNode)
     {
         String option;
-        int datum, position;
+        int datum, position1, position2;
+        SimpleLinkedList lsl = new SimpleLinkedList();
         do {
             System.out.println("\nMenú Grafos");
             System.out.println("0. Regresar");
@@ -523,16 +524,17 @@ public class Main
                     System.out.print("Nodo: ");
                     datum = input.nextInt();
                     input.nextLine();
-                    position = vNode.findNode(datum);
-                    if (position > -1) {
+                    position1 = vNode.findNode(datum);
+                    if (position1 > -1) {
+                        System.out.print("Nodo adyacente: ");
                         datum = input.nextInt();
                         input.nextLine();
-                        position = vNode.findNode(datum);
-                        if (position > -1) {
-                            if (datum != vNode.getDatumVecNode(position)) {
-                                datum = input.nextInt();
-                                input.nextLine();
+                        position2 = vNode.findNode(datum);
+                        if (position2 > -1) {
+                            if (position1 != position2) {
                                 // Crear o añadir nodos a la LSL
+                                lsl.createEnd(vNode.getVecNode(), position1, position2);
+                                System.out.println("Adyacencia creada correctamente");
                             } else {
                                 System.out.println("No puede tener adyacencia al mismo nodo");
                             }
@@ -545,7 +547,25 @@ public class Main
                     
                     break;
                 case "2":
-                    System.out.println("Tamaño grafo: " + vNode.getN());
+                    if (vNode.getN() > 0) {
+                        vNode.showNodes();
+                        System.out.print("Nodo: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position1 = vNode.findNode(datum);
+                        if (position1 > -1) {
+                            Node v[] = vNode.getVecNode();
+                            if (v[position1].link != null) {
+                                lsl.showLSL(vNode.getVecNode(), position1);
+                            } else {
+                                System.out.println(datum + " no tiene nodos adyacentes");
+                            }
+                        } else {
+                            System.out.println(datum + " no existe en el grafo");
+                        }
+                    } else {
+                        System.out.println("Grafo vacío");
+                    }
                     break;
                 default: 
                     System.out.println("Opción no válida");
